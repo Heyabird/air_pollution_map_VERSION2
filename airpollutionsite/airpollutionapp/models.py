@@ -2,6 +2,21 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
+class AirQuality(models.Model):
+    class Meta:
+        db_table = 'air_quality' # This tells Django where the SQL table is
+        managed = False # Use this if table already exists
+                        # and doesn't need to be managed by Django
+    index = models.IntegerField(primary_key=True)
+    year = models.TextField()
+    month = models.TextField()
+    day = models.TextField()
+    hour = models.TextField()
+    PM25 = models.TextField()
+    PM10_mask = models.TextField()
+    retrospective = models.TextField()
+    city = models.TextField()
+
 
 # Testing out Models, following Django tutorial (https://docs.djangoproject.com/en/3.0/intro/tutorial01/) - will delete and change these later
 class Question(models.Model):
