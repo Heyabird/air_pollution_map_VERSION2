@@ -9,14 +9,15 @@ import numpy as np
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
-from airapp.models import AirQuality
+from airpollutionapp.models import AirQuality
 
-# Below code - needs pseudocoding!
+# Need to understand the line below better!
 @api_view(['GET',])
-def get_air_quality(request):
-filtered=AirQuality.objects.filter(year__contains='2020', month__contains='3')
-needed_info = [(i.year + i.month.zfill(2) + i.day.zfill(2) + ':' + i.hour, i.PM25) for i in filtered]
-return Response({"data": needed_info})
+# Let's define a new method to get the air quality value
+def get_air_quality(request, pk=None):
+    filtered=AirQuality.objects.filter(year__contains='2020', month__contains='3')
+    needed_info = [(i.year + i.month.zfill(2) + i.day.zfill(2) + ':' + i.hour, i.PM25) for i in filtered]
+    return Response({"data": needed_info})
 
 # Below is just a practice method; can delete later
 def index(request):
