@@ -7,10 +7,11 @@ database_url = 'sqlite:///{}'.format(database_name)
 engine = create_engine(database_url, echo=False)
 
 
-# The browser link doesn't work :/
+# The browser link from PDF doesn't work, but found the link!
 
 # get the data from url
-url="http://berkeleyearth.lbl.gov/air-quality/local/United_States_of_America/California/San_Francisco"
+
+url="http://berkeleyearth.lbl.gov/air-quality/maps/cities/United_States_of_America/California/San_Francisco.txt"
 air_data = pd.read_csv(url, comment='%', sep='\t', dtype='str')
 air_data.columns = ['year', 'month', 'day', 'hour', 'PM25', 'PM10_mask', 'retrospective']
 

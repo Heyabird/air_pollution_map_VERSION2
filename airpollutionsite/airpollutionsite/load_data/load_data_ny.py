@@ -7,8 +7,6 @@ database_url = 'sqlite:///{}'.format(database_name)
 engine = create_engine(database_url, echo=False)
 
 
-# The browser link doesn't work :/
-
 # get the data from url
 url="http://berkeleyearth.lbl.gov/air-quality/maps/cities/United_States_of_America/New_York/New_York_City.txt"
 air_data = pd.read_csv(url, comment='%', sep='\t', dtype='str')
