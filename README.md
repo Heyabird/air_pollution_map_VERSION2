@@ -11,6 +11,7 @@
 * babel & Webpack
 * material ui
 * pandas
+* Sqlalchemy
 
 -- 
 ### To run this project:
@@ -22,7 +23,7 @@
 5. download node.js
 6. download npm
 6. run npm install ($npm install)
-7. install pandas ($ pip install pandas) & numpy ($ pip install numpy)
+7. install pandas, numpy, sqlalchemy ($ pip install pandas numpy sqlalchemy)
 8. install drf ($ pip install djangorestframework)
 9. pip install requests 
 9. create migrations ($ python manage.py makemigrations)
