@@ -25,15 +25,15 @@ urlpatterns = [
     path('testing/', include('airpollutionapp.urls')),
     # try 2
     path('getAirQuality/', include ('airpollutionapp.urls')),
-
-    path('retrieveDataLA/', include('airpollutionapp.urls')),
-    path('retrieveDataSD/', include('airpollutionapp.urls')),
-    path('retrieveDataNY/', include('airpollutionapp.urls')),
-    path('retrieveDataSF/', include('airpollutionapp.urls')),
-    path('retrieveDataND/', include('airpollutionapp.urls')),
-    path('retrieveDataBJ/', include('airpollutionapp.urls')),    
-    path('retrieveDataHO/', include('airpollutionapp.urls')),
-    path('retrieveDataCH/', include('airpollutionapp.urls')),
+    path('getAirQualityBJ/', include ('airpollutionapp.urls')),
+    # path('retrieveDataLA/', include('airpollutionapp.urls')),
+    # path('retrieveDataSD/', include('airpollutionapp.urls')),
+    # path('retrieveDataNY/', include('airpollutionapp.urls')),
+    # path('retrieveDataSF/', include('airpollutionapp.urls')),
+    # path('retrieveDataND/', include('airpollutionapp.urls')),
+    # path('retrieveDataBJ/', include('airpollutionapp.urls')),    
+    # path('retrieveDataHO/', include('airpollutionapp.urls')),
+    # path('retrieveDataCH/', include('airpollutionapp.urls')),
 
     # password for admin is 'djangoisfun1'
     path('admin/', admin.site.urls),
