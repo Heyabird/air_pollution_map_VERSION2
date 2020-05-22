@@ -5,6 +5,18 @@ from .models import Question
 # import Pandas
 import pandas as pd 
 import numpy as np 
+# lets return the data as json !!
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.http import JsonResponse
+from airapp.models import AirQuality
+
+# Below code - needs pseudocoding!
+@api_view(['GET',])
+def get_air_quality(request):
+filtered=AirQuality.objects.filter(year__contains='2020', month__contains='3')
+needed_info = [(i.year + i.month.zfill(2) + i.day.zfill(2) + ':' + i.hour, i.PM25) for i in filtered]
+return Response({"data": needed_info})
 
 # Below is just a practice method; can delete later
 def index(request):
