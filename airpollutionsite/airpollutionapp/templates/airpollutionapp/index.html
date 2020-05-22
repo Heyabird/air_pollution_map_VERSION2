@@ -1,0 +1,27 @@
+{% load static %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'airpollutionapp/style.css' %}"> -->
+<!-- <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' /> -->
+
+<!-- This page is just for testing the app; can be deleted later -->
+<h2>Testing</h2>
+{% if latest_question_list %} 
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/testing/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+    <!-- <div id='map' style='width: 1200px; height: 900px;'></div> -->
+    <!-- <div id='map' style='width: 400px; height: 300px;'></div> -->
+
+    <!-- <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaGV5YWJpcmQiLCJhIjoiY2s5ZWl0c3M0MDJzdDNnbzE2dXB5bDRhdSJ9.bNbukgXKDz5ZbTc9gQ4-bQ';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+    });
+    </script> -->
+{% else %}
+    <p>No data yet.</p>
+{% endif %}
