@@ -26,7 +26,7 @@ url_ch="http://berkeleyearth.lbl.gov/air-quality/maps/cities/United_States_of_Am
 # # get LA data
 air_data_la = pd.read_csv(url_la, comment='%', sep='\t', dtype='str')
 air_data_la.columns = ['year', 'month', 'day', 'hour', 'PM25', 'PM10_mask', 'retrospective']
-table_name = 'air_quality_la'
+table_name = 'air_quality'
 air_data_la['city'] = 'Los Angeles'
 
 # # get NY data

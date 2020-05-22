@@ -15,8 +15,12 @@ from airpollutionapp.models import AirQuality
 @api_view(['GET',])
 # Let's define a new method to get the air quality value
 def get_air_quality(request, pk=None):
-    filtered=AirQuality.objects.filter(year__contains='2020', month__contains='3')
-    needed_info = [(i.year + i.month.zfill(2) + i.day.zfill(2) + ':' + i.hour, i.PM25) for i in filtered]
+    filtered=AirQuality.objects.filter(
+        year__contains='2020', 
+        month__contains='3',
+        # city__contains='New York'
+        )
+    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm':i.PM25}) for i in filtered]
     return Response({"data": needed_info})
 
 # Below is just a practice method; can delete later
