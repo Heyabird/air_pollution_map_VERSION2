@@ -64,7 +64,7 @@ function renderTableHeader() {
   return (
     <>
       {/* <div> */}
-        <table id='students'>
+        <table id='averageTable'>
             <tbody>
             <tr>{renderTableHeader()}</tr>
               {renderTableData()}
