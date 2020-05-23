@@ -40,7 +40,42 @@ def get_air_quality_city(request, id, pk=None):
         )
     needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm':i.PM25}) for i in filtered]
     return Response({"data": needed_info})
-    # return Response(f"{needed_info}")
+
+@api_view(('GET',))
+def get_monthly_average(request, id, pk=None):
+    city='San Diego'
+    if id==1:
+        city='Beijing'
+    elif id==2:
+        city='Chicago'
+    elif id==3:
+        city='Houston' 
+    elif id==4:
+        city='Los Angeles'
+    elif id==5:
+        city='New Delhi'
+    elif id==6:
+        city='New York'
+    elif id==7:
+        city='San Diego'
+    elif id==8:
+        city='San Francisco'   
+    else:
+        return HttpResponse("That's not a valid city...")
+    filtered=AirQuality.objects.filter(
+        year__contains='2016', 
+        month__contains='3',
+        city__contains=city
+        )
+    #     Getting the AVG value
+    #     Year2020_March_AVG = data.loc[Year_2020 & March]['PM2.5'].mean()
+    #     Year2020_April_AVG = data.loc[Year_2020 & April]['PM2.5'].mean()
+    #     Year2020_May_AVG = data.loc[Year_2020 & May]['PM2.5'].mean()
+    # March_avg = 
+    # April_avg = 
+    # May_avg = 
+    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm':i.PM25}) for i in filtered]
+    return Response({"data": needed_info})
 
 # @api_view(['GET',])
 # # Let's define a new method to get the air quality value

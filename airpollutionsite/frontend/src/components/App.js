@@ -54,29 +54,29 @@ class App extends React.Component {
 
   // testing if the frontend can receive air pollution data in the backend
   getCityData(city) {
-    let cityName;
+    console.log("get city activated!")
+    let id;
     // need to refractor below code; shortening city names
     if(city === "Los Angeles, California, United States") {
-      cityName = 'LA'
+      id = 4
     } else if (city === "San Diego, California, United States") {
-      cityName = 'SD'
+      id = 7
     } else if (city === "New York, New York, United States") {
-      cityName = 'NY'
+      id = 6
     } else if (city === "San Francisco, California, United States") {
-      cityName = 'SF'
+      id = 8
     } else if (city === "New Delhi, Delhi, India") {
-      cityName = 'ND'
+      id = 5
     } else if (city === "Beijing Shi, China") {
-      cityName = 'BJ'
+      id = 1
     } else if (city === "Houston, Texas, United States") {
-      cityName = 'HO'
+      id = 3
     }else if (city==="Chicago, Illinois, United States") {
-      cityName = 'CH'
+      id = 2
     }
-    console.log(cityName, "is chosen!")
-    // trying to make it so that we just have to use 1 retreivedata function in views.py...
-    // var uri = `http://localhost:8000/retrieveData?city=${cityName}`
-    var uri = `http://localhost:8000/retrieveData${cityName}`
+
+    // receive the data from the url
+    var uri = `http://localhost:8000/data/${id}`
     axios.get(uri)
     .then(response => {
       console.log("retrieving data: ", response.data)
@@ -87,6 +87,13 @@ class App extends React.Component {
     .catch(function(err){
       console.log(err)
     })
+
+    this.updateCityData();
+    // this.test(feature.properties.place_name);
+    this.setState({
+      city: feature.properties.place_name,
+      // cityData:
+    });
   }
 
   updateCityData () {
@@ -129,12 +136,6 @@ class App extends React.Component {
         .addTo(map);
       console.log("testing")
       this.getCityData(feature.properties.place_name);
-      this.updateCityData();
-      // this.test(feature.properties.place_name);
-      this.setState({
-        city: feature.properties.place_name,
-        // cityData:
-      });
     });
   }
 

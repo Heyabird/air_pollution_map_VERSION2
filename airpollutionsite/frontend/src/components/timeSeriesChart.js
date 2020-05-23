@@ -11,20 +11,20 @@ class TimeSeriesChart extends React.Component {
     //  dummydata
      cityData: [12, 19, 3, 5],
    }
-  this.cityNameOnly = this.cityNameOnly.bind(this);
+  // this.cityNameOnly = this.cityNameOnly.bind(this);
   this.makeChart = this.makeChart.bind(this);
   }
 
-  // function to get only the city name
-  cityNameOnly(city) {
-    let arr = this.props.city.split(", ");
-    this.setState({city: arr[0]})
-    console.log(arr)
-    console.log(this.state.city)}
+  // // function to get only the city name -- 
+  // cityNameOnly(city) {
+  //   let arr = this.props.city.split(", ");
+  //   this.setState({city: arr[0]})
+  //   console.log(arr)
+  //   console.log(this.state.city)}
   
   makeChart(){
     // got the code below from chart js documentation
-    // eventually need to convert to a more complex type of graph
+    // eventually want to convert to a more complex type of graph
     const ctx = document.getElementById('chart').getContext('2d');
     // make a list of numbers from 2004 to 2020
     var list = [0];
