@@ -21,11 +21,10 @@ from django.conf import settings
 
 
 urlpatterns = [
+    # using 'include' calls another urls.py that will set the urlpatterns 
     path('', include('frontend.urls')),
-    path('testing/', include('airpollutionapp.urls')),
-    # try 2
-    path('getAirQuality/', include ('airpollutionapp.urls')),
-    path('getAirQualityBJ/', include ('airpollutionapp.urls')),
+    path('data/', include ('airpollutionapp.urls')),
+    # path('getAirQualityBJ/', include ('airpollutionapp.urls')),
     # path('retrieveDataLA/', include('airpollutionapp.urls')),
     # path('retrieveDataSD/', include('airpollutionapp.urls')),
     # path('retrieveDataNY/', include('airpollutionapp.urls')),

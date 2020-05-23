@@ -4,8 +4,10 @@ from . import views
 
 urlpatterns = [
     # lets try this again
-    path('', views.get_air_quality, name='getAirQuality'),
-    path('', views.get_air_quality_bj, name='getAirQualityBJ'),
+    # path('', views.get_air_quality_city, name='air quality'),
+    # path('bj/', views.get_air_quality_bj, name='BJ'),
+    path('<int:id>/', views.get_air_quality_city),
+    # path('<int:id>/', views.detail, name='detail'),
     # path('', views.index, name='index'),
     # path('', views.receive_data_la, name='retrieveDataLA'),
     # path('', views.receive_data_sd, name='retrieveDataSD'),
@@ -15,7 +17,7 @@ urlpatterns = [
     # path('', views.receive_data_bj, name='retrieveDataBJ'),
     # path('', views.receive_data_ho, name='retrieveDataHO'),
     # path('', views.receive_data_ch, name='retrieveDataCH'),
-    path('<int:question_id>/', views.detail, name='detail'),
+
 
 
 ]

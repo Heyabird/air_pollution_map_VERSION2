@@ -6,6 +6,7 @@ import TimeSeriesChart from './timeSeriesChart';
 import AverageTable from './averageTable';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+// remove this later into .env
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGV5YWJpcmQiLCJhIjoiY2s5ZWl0c3M0MDJzdDNnbzE2dXB5bDRhdSJ9.bNbukgXKDz5ZbTc9gQ4-bQ';
 
 const axios = require('axios');
