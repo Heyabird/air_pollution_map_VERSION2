@@ -16,11 +16,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       // this is a dummy data... eventually want to turn the actual external data in to this particular object format so that it is easy to pull into charts
-      students: [
-        { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
-        { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
-        { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
-        { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
+      averageData: [
+        { id: 'March', average_2018: 4, average_2019: 3, average_2020: 5 },
+        { id: 'April', average_2018: 3, average_2019: 2, average_2020: 9},
+        { id: 'May', average_2018: 5, average_2019: 3, average_2020: 10 }
       ],
       cityData: {
         city: 'Los Angeles',
@@ -58,7 +57,7 @@ class App extends React.Component {
   // }
 
 
-  // testing if the frontend can receive air pollution data in the backend
+  // receive city data from the server
   getCityData(city) {
     console.log("get city activated!")
     let id;
@@ -81,7 +80,7 @@ class App extends React.Component {
       id = 2
     }
 
-    // receive the data from the url
+    // receive the data from the url using axios
     var uri = `http://localhost:8000/data/${id}`
     axios.get(uri)
     .then(response => {
@@ -103,7 +102,7 @@ class App extends React.Component {
             ['May', 33, 22, 43]
           ],
         }
-      }, ()=> console.log("update city data state"))
+      }, () => console.log("update city data state"))
     })
     .catch(function(err){
       console.log(err)
@@ -181,7 +180,7 @@ class App extends React.Component {
 
   render() {   
     // destructuring states
-    const { city, cityData, students } = this.state;
+    const { city, cityData, averageData } = this.state;
     return (
       <>
         <div id="pagetitle">
@@ -198,7 +197,7 @@ class App extends React.Component {
             cityData={cityData}/>
           <AverageTable 
             city={city}
-            students={students}
+            averageData={averageData}
             // averagePM={mockAveragePM}
             cityData={cityData}
             />

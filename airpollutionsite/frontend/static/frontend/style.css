@@ -34,7 +34,8 @@ body {
 }
 
 .mapboxgl-canvas{
-	height: 400px;
+	height: 300px;
+	width: 800px;
 	float: center;
 	margin: auto;
 }

@@ -41,16 +41,23 @@ const averageTable = props => {
 // const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
 
 function renderTableData() {
-  return props.students.map((student, index) => {
-     const { id, name, age, email } = student //destructuring
+  return props.averageData.map((value, index) => {
+     const { id, average_2018, average_2019, average_2020 } = value //destructuring
      return (
         <tr key={id}>
            <td>{id}</td>
-           <td>{name}</td>
-           <td>{age}</td>
-           <td>{email}</td>
+           <td>{average_2018}</td>
+           <td>{average_2019}</td>
+           <td>{average_2020}</td>
         </tr>
      )
+  })
+}
+
+function renderTableHeader() {
+  let header = ["", 2018, 2019, 2020]
+  return header.map((key, index) => {
+     return <th key={index}>{key}</th>
   })
 }
 
@@ -59,11 +66,12 @@ function renderTableData() {
       {/* <div> */}
         <table id='students'>
             <tbody>
+            <tr>{renderTableHeader()}</tr>
               {renderTableData()}
             </tbody>
         </table>
       {/* </div> */}
-      <h4 id='title'>Average PM2.5 Levels</h4>
+      <h4 id='title'>Average PM2.5 Levels!</h4>
       {/* <div id="table-container" style={{height: "10%", width: "50%", margin:'0px', display:"inline-block"}}
       > */}
         {/* need to swtich out of Material UI -- their tables are extremely tricky to custom style.. */}
