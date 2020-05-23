@@ -6,6 +6,7 @@ body {
 	display: flex;
 	color: #2e2e2e;
 	background-color: #ececec;
+	float: center;
 }
 
 #pagetitle {
@@ -25,13 +26,13 @@ body {
 	right: 0;
 	left: 0;
   bottom: 0; */
-  height: 250px;
-	width: 900px;
+  /* height: 250px; */
+	width: 90%;
 	margin: auto;
 }
 
 .mapboxgl-canvas{
-	/* height: 100px; */
+	height: 100px;
 }
 /*** MARKER/POPUP ***/
 #marker {
