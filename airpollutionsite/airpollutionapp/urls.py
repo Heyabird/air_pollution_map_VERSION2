@@ -7,7 +7,7 @@ urlpatterns = [
     # path('', views.get_air_quality_city, name='air quality'),
     # path('bj/', views.get_air_quality_bj, name='BJ'),
     path('<int:id>/', views.get_air_quality_city),
-    path('/average/<int:id>/', views.get_air_quality_city),
+    path('average/<int:id>/', views.get_air_quality_city),
     # path('<int:id>/', views.detail, name='detail'),
     # path('', views.index, name='index'),
     # path('', views.receive_data_la, name='retrieveDataLA'),

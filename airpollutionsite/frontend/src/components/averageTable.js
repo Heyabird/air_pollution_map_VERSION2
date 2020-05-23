@@ -37,14 +37,40 @@ const averageTable = props => {
     // createData('Gingerbread', 356, 16.0, 49, 3.9),
   ];
 
-console.log("cityData", props.cityData);
-console.log("cityData.tableData", props.cityData.tableData);
-console.log("cityData.tableData[0]", props.cityData.tableData[0]);
 
-const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
+// const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
+
+function renderTableHeader() {
+  let header = props.cityData.chartData
+  return header.map((key, index) => {
+     return <th key={index}>{key.toUpperCase()}</th>
+  })
+}
+
+function renderTableData() {
+  return props.cityData.chartData.map((pm, index) => {
+     return (
+        <tr key={id}>
+           <td>{id}</td>
+           <td>{pm}</td>
+           <td>1</td>
+           <td>2</td>
+        </tr>
+     )
+  })
+}
 
   return (
     <>
+      <div>
+        <h1 id='title'>React Dynamic Table</h1>
+        <table id='students'>
+            <tbody>
+              <tr>{this.renderTableHeader()}</tr>
+              {this.renderTableData()}
+            </tbody>
+        </table>
+      </div>
       <div id="table-container" style={{height: "10%", width: "50%", margin:'0px', display:"inline-block"}}
       >
         {/* need to swtich out of Material UI -- their tables are extremely tricky to custom style.. */}
@@ -74,34 +100,8 @@ const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
           </Table>
         </TableContainer>
 <div>
-        {/* <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>A</TableHead>
-              <TableHead style={customColumnStyle}>B</TableHead>
-              <TableHead>C</TableHead>
-            </TableRow>            
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableRowColumn>1</TableRowColumn>
-              <TableRowColumn style={customColumnStyle}>2</TableRowColumn>
-              <TableRowColumn>3</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>4</TableRowColumn>
-              <TableRowColumn style={customColumnStyle}>5</TableRowColumn>
-              <TableRowColumn>6</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>7</TableRowColumn>
-              <TableRowColumn style={customColumnStyle}>8</TableRowColumn>
-              <TableRowColumn>9</TableRowColumn>
-            </TableRow>
-          </TableBody>
-        </Table> */}
-
-        <h4>Average PM2.5 levels!
+  
+        <h4>Average PM2.5 levels!!!!
       </h4>
       </div>
 
