@@ -87,13 +87,6 @@ class App extends React.Component {
     .catch(function(err){
       console.log(err)
     })
-
-    this.updateCityData();
-    // this.test(feature.properties.place_name);
-    this.setState({
-      city: feature.properties.place_name,
-      // cityData:
-    });
   }
 
   updateCityData () {
@@ -136,6 +129,12 @@ class App extends React.Component {
         .addTo(map);
       console.log("testing")
       this.getCityData(feature.properties.place_name);
+      this.updateCityData();
+      // this.test(feature.properties.place_name);
+      this.setState({
+        city: feature.properties.place_name,
+        // cityData:
+      });
     });
   }
 
