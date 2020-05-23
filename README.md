@@ -41,6 +41,6 @@ To implement tests(wip), you should run:
 --
 ### Important Links: 
 * wireframe sketch: https://drive.google.com/file/d/1MBpl6I5hwBFqAfZu_hOuzZqy3TOsYi43/view?usp=sharing
-* project notes (developer + user stories, resources): https://docs.google.com/spreadsheets/d/1PjkgDPjw1uBy9SX1FWiuwtzszUFagrcYSH4VaVt4pJQ/edit#gid=0
+* project notes (developer + user stories, resources): https://docs.google.com/spreadsheets/d/1pTjB6Meel2vV00nJnJUgZDhO8YE8yjBbbNYumgL_yXQ/edit?usp=sharing
 
 

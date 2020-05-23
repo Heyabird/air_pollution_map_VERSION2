@@ -2,11 +2,18 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
+// import TableHeader from '@material-ui/core/TableHeader';
+// import TableHeaderColumn from '@material-ui/core/TableHeaderColumn';
+// import TableRowColumn from '@material-ui/core/TableRowColumn';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
+// getMuiTheme,
+
 
 const useStyles = makeStyles({
   table: {
@@ -34,21 +41,22 @@ console.log("cityData", props.cityData);
 console.log("cityData.tableData", props.cityData.tableData);
 console.log("cityData.tableData[0]", props.cityData.tableData[0]);
 
+const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
 
   return (
     <>
       <div id="table-container" style={{display:"inline-block", float:"right"}}
       >
-        {/* need to swtich out of Material UI -- their tables are extremely tricky to custom style.. */}
+        need to swtich out of Material UI -- their tables are extremely tricky to custom style..
         <TableContainer width={1/4}
         >
           <Table className={classes.table} size="small" aria-label="a simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell> </TableCell>
-                <TableCell color="primary" align="left">2018</TableCell>
-                <TableCell align="left">2019</TableCell>
-                <TableCell align="left">2020</TableCell>
+            <TableHead >
+              <TableRow >
+                <TableCell style={customColumnStyle}> </TableCell>
+                <TableCell style={customColumnStyle} color="primary" align="left">2018</TableCell>
+                <TableCell style={customColumnStyle} align="left">2019</TableCell>
+                <TableCell style={customColumnStyle} align="left">2020</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -65,8 +73,39 @@ console.log("cityData.tableData[0]", props.cityData.tableData[0]);
             </TableBody>
           </Table>
         </TableContainer>
-        <h4>Average PM2.5 levels
+<div>
+        {/* <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>A</TableHead>
+              <TableHead style={customColumnStyle}>B</TableHead>
+              <TableHead>C</TableHead>
+            </TableRow>            
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableRowColumn>1</TableRowColumn>
+              <TableRowColumn style={customColumnStyle}>2</TableRowColumn>
+              <TableRowColumn>3</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>4</TableRowColumn>
+              <TableRowColumn style={customColumnStyle}>5</TableRowColumn>
+              <TableRowColumn>6</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>7</TableRowColumn>
+              <TableRowColumn style={customColumnStyle}>8</TableRowColumn>
+              <TableRowColumn>9</TableRowColumn>
+            </TableRow>
+          </TableBody>
+        </Table> */}
+
+        <h4>Average PM2.5 levels!
       </h4>
+      </div>
+
+        
       </div>
     </>
   );

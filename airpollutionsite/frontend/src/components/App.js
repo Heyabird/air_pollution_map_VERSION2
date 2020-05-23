@@ -22,7 +22,7 @@ class App extends React.Component {
         tableData: [
           ['March', '❓', '❓', '❓'],
           ['April', '❓', '❓', '❓'],
-          ['May', '❓', '❓', '❓']
+          ['May', '❓', '❓', '❓!']
         ],
       },
       // externaldata takes in data from browser via axios call
@@ -39,7 +39,7 @@ class App extends React.Component {
     };
     // this.mapSetUp = this.mapSetUp.bind(this);
     this.getCityData = this.getCityData.bind(this);
-    this.updateCityData = this.updateCityData.bind(this);
+    // this.updateCityData = this.updateCityData.bind(this);
     }
   
   // mapSetUp(){
@@ -79,9 +79,58 @@ class App extends React.Component {
     var uri = `http://localhost:8000/data/${id}`
     axios.get(uri)
     .then(response => {
-      console.log("retrieving data: ", response.data)
-      var x = object.keys(response.data)
-      var years = response.data.Year
+      console.log("retrieving city data: ", response.data)
+      var arrPM = [];
+      // extract all the PM2.5 values from the city data
+      for(let i=0; i<response.data.data.length; i++) {
+        arrPM.push(response.data.data[i].pm)
+        // console.log("arrPM being pushed:", arrPM)
+      }
+      console.log("arrPM:", arrPM);
+      this.setState({
+        cityData: {
+          city: this.state.city,
+          chartData: arrPM,
+          tableData: [
+            ['March', 10, 20, 10],
+            ['April', 10, 20, 10],
+            ['May', 33, 22, 43]
+          ],
+        }
+      }, ()=> console.log("update city data state"))
+    })
+    .catch(function(err){
+      console.log(err)
+    })
+  }
+
+  getAverageData(city) {
+    console.log("get average data activated!")
+    let id;
+    // need to refractor below code; shortening city names
+    if(city === "Los Angeles, California, United States") {
+      id = 4
+    } else if (city === "San Diego, California, United States") {
+      id = 7
+    } else if (city === "New York, New York, United States") {
+      id = 6
+    } else if (city === "San Francisco, California, United States") {
+      id = 8
+    } else if (city === "New Delhi, Delhi, India") {
+      id = 5
+    } else if (city === "Beijing Shi, China") {
+      id = 1
+    } else if (city === "Houston, Texas, United States") {
+      id = 3
+    }else if (city==="Chicago, Illinois, United States") {
+      id = 2
+    }
+
+    // receive the data from the url
+    var uri = `http://localhost:8000/data/average/${id}`
+    axios.get(uri)
+    .then(response => {
+      console.log("retrieving average data: ", response.data)
       this.setState({externalData: years})
     })
     .catch(function(err){
@@ -89,21 +138,7 @@ class App extends React.Component {
     })
   }
 
-  updateCityData () {
-    console.log("updating city data!");
-    this.setState({
-      // start with dummy data...
-      cityData: {
-        city: this.state.city,
-        chartData: [3,32,9,4,15,6,3,7,54,7,34,45,22,2,3,2,1,1,2],
-        tableData: [
-          ['March', 10, 20, 10],
-          ['April', 10, 20, 10],
-          ['May', 33, 22, 43]
-        ],
-      },
-    })
-  }
+
   
   // Set map and pop up whenever the page loads
   componentDidMount() {
@@ -129,7 +164,7 @@ class App extends React.Component {
         .addTo(map);
       console.log("testing")
       this.getCityData(feature.properties.place_name);
-      this.updateCityData();
+      // this.updateCityData();
       // this.test(feature.properties.place_name);
       this.setState({
         city: feature.properties.place_name,
