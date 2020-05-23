@@ -94,7 +94,7 @@ class TimeSeriesChart extends React.Component {
       {/* hard to style canvas, so make a container and style that */}
         <div 
           className="chart-container" 
-          style={{height: "10%", width: "50%", margin:'0px'}}
+          style={{height: "10%", width: "50%", margin:'0px', float:'left'}}
           >
           {/* canvas is the chart */}
           <canvas id="chart"></canvas>

@@ -45,7 +45,7 @@ const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
 
   return (
     <>
-      <div id="table-container" style={{height: "10%", width: "50%", margin:'0px'}}
+      <div id="table-container" style={{height: "10%", width: "50%", margin:'0px', display:"inline-block"}}
       >
         {/* need to swtich out of Material UI -- their tables are extremely tricky to custom style.. */}
         <TableContainer
