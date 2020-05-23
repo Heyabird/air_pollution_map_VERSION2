@@ -40,21 +40,15 @@ const averageTable = props => {
 
 // const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
 
-function renderTableHeader() {
-  let header = props.cityData.chartData
-  return header.map((key, index) => {
-     return <th key={index}>{key.toUpperCase()}</th>
-  })
-}
-
 function renderTableData() {
-  return props.cityData.chartData.map((pm, index) => {
+  return props.students.map((student, index) => {
+     const { id, name, age, email } = student //destructuring
      return (
         <tr key={id}>
            <td>{id}</td>
-           <td>{pm}</td>
-           <td>1</td>
-           <td>2</td>
+           <td>{name}</td>
+           <td>{age}</td>
+           <td>{email}</td>
         </tr>
      )
   })
@@ -62,19 +56,18 @@ function renderTableData() {
 
   return (
     <>
-      <div>
-        <h1 id='title'>React Dynamic Table</h1>
+      {/* <div> */}
         <table id='students'>
             <tbody>
-              <tr>{this.renderTableHeader()}</tr>
-              {this.renderTableData()}
+              {renderTableData()}
             </tbody>
         </table>
-      </div>
-      <div id="table-container" style={{height: "10%", width: "50%", margin:'0px', display:"inline-block"}}
-      >
+      {/* </div> */}
+      <h4 id='title'>Average PM2.5 Levels</h4>
+      {/* <div id="table-container" style={{height: "10%", width: "50%", margin:'0px', display:"inline-block"}}
+      > */}
         {/* need to swtich out of Material UI -- their tables are extremely tricky to custom style.. */}
-        <TableContainer
+        {/* <TableContainer
         >
           <Table className={classes.table} size="small" aria-label="a simple table">
             <TableHead >
@@ -102,11 +95,11 @@ function renderTableData() {
 <div>
   
         <h4>Average PM2.5 levels!!!!
-      </h4>
-      </div>
+      </h4> */}
+      {/* </div> */}
 
         
-      </div>
+      {/* </div> */}
     </>
   );
 

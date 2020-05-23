@@ -16,9 +16,15 @@ class App extends React.Component {
     super(props);
     this.state = {
       // this is a dummy data... eventually want to turn the actual external data in to this particular object format so that it is easy to pull into charts
+      students: [
+        { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
+        { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
+        { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
+        { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
+      ],
       cityData: {
         city: 'Los Angeles',
-        chartData: [1,12,9,3,15,6,3,7,54,7,34,42,52,12,66,77,88,69,109],
+        chartData: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         tableData: [
           ['March', '❓', '❓', '❓'],
           ['April', '❓', '❓', '❓'],
@@ -175,7 +181,7 @@ class App extends React.Component {
 
   render() {   
     // destructuring states
-    const { city, cityData } = this.state;
+    const { city, cityData, students } = this.state;
     return (
       <>
         <div id="pagetitle">
@@ -192,6 +198,7 @@ class App extends React.Component {
             cityData={cityData}/>
           <AverageTable 
             city={city}
+            students={students}
             // averagePM={mockAveragePM}
             cityData={cityData}
             />

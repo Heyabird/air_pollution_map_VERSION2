@@ -16,6 +16,8 @@ body {
 
 #app {
 	margin: auto;
+	/* display: block; */
+	/* justify-content: center; */
 }
 
 /*** MAP ***/
@@ -27,13 +29,20 @@ body {
 	left: 0;
   bottom: 0; */
   /* height: 250px; */
-	width: 90%;
-	margin: auto;
+	/* width:200%; */
+	/* margin: auto; */
 }
 
 .mapboxgl-canvas{
-	height: 100px;
+	height: 400px;
+	float: center;
+	margin: auto;
 }
+
+.mapboxgl-ctrl-attrib-inner {
+	float:center;
+}
+
 /*** MARKER/POPUP ***/
 #marker {
 	background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
@@ -63,7 +72,7 @@ body {
 } */
 
 #chart {
-	width: 300px;
+	width: 500px;
 	display: inline-block;
 }
 
@@ -81,7 +90,36 @@ body {
 	margin: 20px;
 	padding-top: 20px;
 	/* height: 100px; */
-} */
+
+#title {
+	text-align: center;
+	font-family: arial, sans-serif;
+}
+	
+#students {
+	text-align: center;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	border: 3px solid #ddd;
+	width: 90%;
+}
+	
+#students td, #students th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+	
+#students tr:nth-child(even){background-color: #f2f2f2;}
+	
+#students tr:hover {background-color: #ddd;}
+	
+#students th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #4CAF50;
+	color: white;
+}
 
 /*** TOOLS ***/
 
