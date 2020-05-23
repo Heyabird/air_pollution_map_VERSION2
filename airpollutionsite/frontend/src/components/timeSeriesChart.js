@@ -7,7 +7,7 @@ class TimeSeriesChart extends React.Component {
   
 
   this.state = {
-     city: "",
+     city: this.props.city,
     //  dummydata
      cityData: [12, 19, 3, 5],
    }
@@ -82,7 +82,7 @@ class TimeSeriesChart extends React.Component {
     if (x!==this.state.city){
     this.makeChart();
     }
-    var x = this.state.city
+    x = this.state.city;
   }
 
 
@@ -94,10 +94,10 @@ class TimeSeriesChart extends React.Component {
       {/* hard to style canvas, so make a container and style that */}
         <div 
           className="chart-container" 
-          style={{height: "400px", width: "300px", float: "left", margin:'20px'}}
+          style={{height: "10%", width: "50%", margin:'0px'}}
           >
           {/* canvas is the chart */}
-          <canvas id="chart" style={{maxWidth:"500px", maxHeight:"300px", display:"inline-block"}}></canvas>
+          <canvas id="chart"></canvas>
           <h4>PM2.5 levels Over Time
           {/* {this.props.city} */}
         </h4>

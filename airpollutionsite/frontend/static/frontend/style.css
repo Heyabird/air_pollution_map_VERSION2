@@ -55,11 +55,11 @@ body {
 } */
 
 /* doesnt work... */
-.chart-container {
-	width: 300px;
+/* .chart-container {
+	width: 800px;
 	float: left;
 	/* color: #ffbbbb */
-}
+} */
 
 #chart {
 	width: 300px;
