@@ -11,30 +11,22 @@ class TimeSeriesChart extends React.Component {
     //  dummydata
      cityData: [12, 19, 3, 5],
    }
-  // this.cityNameOnly = this.cityNameOnly.bind(this);
   this.makeChart = this.makeChart.bind(this);
   }
 
-  // // function to get only the city name -- 
-  // cityNameOnly(city) {
-  //   let arr = this.props.city.split(", ");
-  //   this.setState({city: arr[0]})
-  //   console.log(arr)
-  //   console.log(this.state.city)}
-  
   makeChart(){
     // got the code below from chart js documentation
     // eventually want to convert to a more complex type of graph
     const ctx = document.getElementById('chart').getContext('2d');
     // make a list of numbers from 2004 to 2020
     var list = [0];
-    // for (var i = 2004; i <= 2020; i++) {
-    //     list.push(i);
-    // }
+    // pushing in the length of chartData.
     for (var i=0; i<=this.props.cityData.chartData.length; i++) {
       list.push(i);
     }
     console.log(list);
+    // currently, the xLabels are the length of chartData.
+    // need to figure out a way to still use this label ticks while changing the label as year values
     const xLabels = list;
     const myChart = new Chart(ctx, {
         type: 'line',
@@ -42,6 +34,7 @@ class TimeSeriesChart extends React.Component {
             labels: xLabels,
             datasets: [{
                 label: 'pm2.5',
+                // make line tension 0 to not have any curves
                 lineTension: 0,
                 data: this.props.cityData.chartData,
                 backgroundColor: [
@@ -67,7 +60,7 @@ class TimeSeriesChart extends React.Component {
           scales: {
               xAxes: [{
                   ticks: {
-                      // Include a dollar sign in the ticks
+                      // A way to change what the value looks like...  but not too flexible
                       callback: function(value, index, values) {
                           return value ;
                       }
@@ -87,6 +80,8 @@ class TimeSeriesChart extends React.Component {
 	componentDidUpdate() {
     var x;
     if (x!==this.state.city){
+    // whenever the state/prop updates, remake the Chart
+    // this might be causing the bug where the chart randomly updates when the mouse hover overs certain points on the chart
     this.makeChart();
     }
     x = this.state.city;
