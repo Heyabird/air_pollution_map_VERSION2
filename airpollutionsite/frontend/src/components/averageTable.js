@@ -36,14 +36,14 @@ const averageTable = props => {
   //   // createData('Gingerbread', 356, 16.0, 49, 3.9),
   // ];
 
-const averagePM = props.cityData.tableData;
+const averagePM = props.averageData;
 
 // const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
 
 function renderTableData() {
-  let tableData = props.cityData.tableData[0];
+  // let tableData = props.cityData.tableData[0];
   console.log("props.averageData:", props.averageData)
-  return props.cityData.tableData.map((value, index) => {
+  return props.averageData.map((value, index) => {
      const { id, average_2018, average_2019, average_2020 } = value //destructuring
 
      return (

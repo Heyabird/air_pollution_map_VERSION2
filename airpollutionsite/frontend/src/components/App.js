@@ -50,7 +50,7 @@ class App extends React.Component {
 
   // receive city data from the server
   getCityData(city) {
-    console.log("get city activated!")
+    console.log("get city activated!:", city)
     let id;
     // need to refractor below code; shortening city names
     if (city === "Beijing Shi, China") {
@@ -87,11 +87,6 @@ class App extends React.Component {
         cityData: {
           city: this.state.city,
           chartData: arrPM,
-          tableData: [
-            ['March', 10, 20, 10],
-            ['April', 10, 20, 10],
-            ['May', 33, 22, 43]
-          ],
         }
       }, () => console.log("update city data state"))
     })
@@ -126,12 +121,19 @@ class App extends React.Component {
     axios.get(uri)
     .then(response => {
       console.log("retrieving average data: ", response.data)
-      this.setState({externalData: years})
+      this.setState({
+        averageData: [
+          { id: 'March', average_2018: 1, average_2019: 1, average_2020: 1 },
+          { id: 'April', average_2018: 1, average_2019: 1, average_2020: 1},
+          { id: 'May', average_2018: 1, average_2019: 1, average_2020: 1 }
+        ]
     })
     .catch(function(err){
       console.log(err)
     })
-  }
+  })
+}
+  
 
 
   
@@ -157,11 +159,9 @@ class App extends React.Component {
         .setLngLat(feature.geometry.coordinates)
         .setHTML('<h3>' + feature.properties.place_name + '</h3>')
         .addTo(map);
-      console.log("testing")
+      console.log("testing");
       this.getCityData(feature.properties.place_name);
       this.getAverageData(feature.properties.place_name);
-      // this.updateCityData();
-      // this.test(feature.properties.place_name);
       this.setState({
         city: feature.properties.place_name,
         // cityData:
