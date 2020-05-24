@@ -6,7 +6,7 @@ import TimeSeriesChart from './timeSeriesChart';
 import AverageTable from './averageTable';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-// remove this later into .env
+// mapbox token; remove this later into .env
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGV5YWJpcmQiLCJhIjoiY2s5ZWl0c3M0MDJzdDNnbzE2dXB5bDRhdSJ9.bNbukgXKDz5ZbTc9gQ4-bQ';
 
 const axios = require('axios');
@@ -15,15 +15,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // starting data for average table
       averageData: [
         { id: 'March', average_2018: '❓', average_2019: '❓', average_2020: '❓' },
         { id: 'April', average_2018: '❓', average_2019: '❓', average_2020: '❓'},
         { id: 'May', average_2018: '❓', average_2019: '❓', average_2020: '❓' }
       ],
+      // starting data for time-series chart
       cityData: {
         city: 'Los Angeles',
-        chartData: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        chartData: [30,30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
       },
+      // starting lng, lat, and zoom for the map
       lng: -100,
       lat: 35,
       zoom: 0.5,
@@ -34,11 +37,11 @@ class App extends React.Component {
     }
   
 
-  // receive city data from the server
+  // receive city data from Django
   getCityData(city) {
     console.log("get city activated!:", city)
     let id;
-    // need to refractor below code; shortening city names
+    // match each city to the id param for url 
     if (city === "Beijing Shi, China") {
       id = 1
     } else if (city==="Chicago, Illinois, United States") {
@@ -63,12 +66,13 @@ class App extends React.Component {
     .then(response => {
       console.log("retrieving city data: ", response.data)
       var arrPM = [];
-      // extract all the PM2.5 values from the city data
+      // extract all the PM2.5 values from the city data and put into an array
       for(let i=0; i<response.data.data.length; i++) {
         arrPM.push(response.data.data[i].pm)
         // console.log("arrPM being pushed:", arrPM)
       }
       console.log("arrPM:", arrPM);
+      // update the time-series chart data
       this.setState({
         cityData: {
           city: this.state.city,
@@ -81,6 +85,7 @@ class App extends React.Component {
     })
   }
 
+  // receive average pm2.5 values for march, april, may 2018-2020 
   getAverageData(city) {
     console.log("get average data activated!")
     let id;
@@ -102,13 +107,14 @@ class App extends React.Component {
       id = 88
     }
 
-    // receive the data from the url
+    // receive the data from the url via axios
     var uri = `http://localhost:8000/data/${id}`
     axios.get(uri)
     .then(response => {
       console.log("retrieving average data: ", response.data);
       var avgArr = response.data.avgs
       this.setState({
+        // store average pm2.5 values from the data object in the back-end
         averageData: [
           { id: 'March', average_2018: (avgArr[0].average_pm).toFixed(2), average_2019: (avgArr[3].average_pm).toFixed(2), average_2020: (avgArr[6].average_pm).toFixed(2) },
           { id: 'April', average_2018: (avgArr[1].average_pm).toFixed(2), average_2019: (avgArr[4].average_pm).toFixed(2), average_2020: (avgArr[7].average_pm).toFixed(2)},
@@ -132,23 +138,26 @@ class App extends React.Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
       });
-      // Add zoom and rotation controls to the map.
+      // Add zoom and rotation controls to the map
       map.addControl(new mapboxgl.NavigationControl());
       
     // activate pop up function
     map.on('click', (e) => {
       var features = map.queryRenderedFeatures(e.point, {
+        // call the layer of 8 cities that I made on mapbox studio
         layers: ['8-cities']
       });
       if (!features.length) {
         return;
       }
       var feature = features[0];
+      // make a pop up function
       var popup = new mapboxgl.Popup({ offset: [0, -15] })
         .setLngLat(feature.geometry.coordinates)
         .setHTML('<h3>' + feature.properties.place_name + '</h3>')
         .addTo(map);
       console.log("testing");
+      // receive time-series and average table data everytime the page loads
       this.getCityData(feature.properties.place_name);
       this.getAverageData(feature.properties.place_name);
       this.setState({
@@ -164,7 +173,8 @@ class App extends React.Component {
     return (
       <>
         <div id="pagetitle">
-          <h2>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}>{city}</span>.</span></h2>
+          {/* make the title of the page change once the city is clicked */}
+          <p>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}>{city}</span>!</span></p>
           <h5><strong>To choose a city, click on one of the red markers in the map.</strong></h5>
         </div>
         <br/>

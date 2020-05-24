@@ -11,7 +11,6 @@ note: this is a version 2 of the air pollution map.
 * npm / node.js
 * React
 * babel & Webpack
-* material ui
 * pandas
 * Sqlalchemy
 

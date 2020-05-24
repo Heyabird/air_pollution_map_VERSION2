@@ -206,6 +206,7 @@ a:hover{
   body {
     padding: 15px 3px 3px 3px;
     margin: 0px auto;
+    width: 300px;
 	}
 
 	#pagetitle {
@@ -246,6 +247,10 @@ a:hover{
 
   #title {
     font-size: 11px;
+  }
+
+  h2 {
+    font-size: 12px;
   }
   
 }
