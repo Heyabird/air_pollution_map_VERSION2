@@ -5,8 +5,10 @@ from django.conf import settings
 database_name = settings.DATABASES['default']['NAME']
 database_url = 'sqlite:///{}'.format(database_name)
 engine = create_engine(database_url, echo=False)
+
 # get the data from url
 url="http://berkeleyearth.lbl.gov/air-quality/maps/cities/United_States_of_America/California/San_Diego.txt"
+
 colnames = ['year', 'month', 'day', 'hour', 'PM25', 'PM10_mask', 'retrospective']
 dtypes = {
     'year': 'int',

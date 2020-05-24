@@ -48,11 +48,11 @@ def get_air_quality_city(request, id, pk=None):
         month__range=(3,5), 
         year__contains=2020
         )
-    needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm2.5':i.PM25, 'monthly_means': i.monthly_means}) for i in avgs]
+    needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm2.5':i.PM25}) for i in avgs]
 
-    if id==7:
+    if id==1 or id==2 or id==3 or id==4 or id==5 or id==6 or id==7 or id==8:
         return Response({"data": needed_info})
-    else:
+    elif id==11 or id==22 or id==33 or id==44 or id==55 or id==66 or id==77 or id==88:
         # print([(i.year,i.month,i.PM25) for i in avgs])
         return Response({"avgs": needed_avg})
 
