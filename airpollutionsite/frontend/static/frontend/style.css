@@ -5,7 +5,7 @@ body {
 	font-family: "roboto light";
 	display: flex;
 	color: #2e2e2e;
-	background-color: red;
+	background-color: #ececec;
 	float: center;
 }
 
@@ -24,14 +24,6 @@ body {
 
 .mapContainer {
 	height: 150px;
-	/* position: absolute; */
-	/* top: 0;
-	right: 0;
-	left: 0;
-  bottom: 0; */
-  /* height: 250px; */
-	/* width:200%; */
-	/* margin: auto; */
 }
 
 .mapboxgl-canvas{
@@ -61,17 +53,7 @@ body {
 
 
 /*** CHART and TABLE ***/
-/* element.style {
-  display: inline-block;
-  width: 300px;
-} */
 
-/* doesnt work... */
-.chart-container {
-	width: 800px;
-	float: left;
-	/* color: #ffbbbb */
-}
 
 /* .chartjs-render-monitor {
 	height:600px;
@@ -80,8 +62,8 @@ body {
 
 
 #chart {
+	/* height: 180px; */
 	width: 800px;
-	height: 180px;
 	display: inline-block;
 	float: left;
 }
@@ -145,7 +127,7 @@ body {
 	display: inline-block;
 }
 
-/* LINKS */
+/* HYPERLINKS */
 a { 
 	color: black; 
 	font-weight: normal;
@@ -160,10 +142,21 @@ a:hover{
 }
 
 
-/* ADD MEDIA QUERIES BELOW */
+/* MEDIA QUERIES BELOW */
+
+/* Tablets */
+@media (max-width: 1000px) {
+	body {
+	  color: yellow;
+	}
+  }
+
+/* Mobile phones */
 @media only screen and (max-width: 660px) {
 
   body {
     color: #fcd9df;
 	}
 }
+
+/* END OF MEDIA QUERIES */
