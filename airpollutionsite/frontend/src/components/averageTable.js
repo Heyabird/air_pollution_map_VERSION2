@@ -51,7 +51,7 @@ function renderTableHeader() {
             </tbody>
         </table>
       {/* </div> */}
-      <h5>Average PM2.5 Levels</h5>
+      <h5 id='title'>Average PM2.5 Levels</h5>
      
     </>
   );

@@ -23,14 +23,14 @@ body {
 /*** MAP ***/
 
 .mapContainer {
-	height: 150px;
+  height: 150px;
+  width: 700px;
 }
 
 .mapboxgl-canvas{
-	height: 200px;
-	width: 800px;
+	/* height: 200px; */
 	float: center;
-	margin: auto;
+	margin: 10px auto;
 }
 
 .mapboxgl-ctrl-attrib-inner {
@@ -62,10 +62,12 @@ body {
 
 
 #chart {
-	/* height: 180px; */
-	width: 800px;
+	height: 100px;
+	width: 700px;
 	display: inline-block;
-	float: left;
+  float: left;
+  padding: 10px 0 10px 0;
+
 }
 
 #graphs {
@@ -93,8 +95,8 @@ body {
 	margin: auto;
 	border-collapse: collapse;
 	border: 3px solid #ddd;
-	width: 100%;
-	height: 30%;
+	width: 700px;
+	height: 150px;
 	font-size: 12px;
 }
 	
@@ -147,16 +149,105 @@ a:hover{
 /* Tablets */
 @media (max-width: 1000px) {
 	body {
-	  color: yellow;
+	  /* color: yellow; */
 	}
+	
+	#pagetitle {
+		margin: auto;
+		text-align: center;
+    width: 550px;
+    font-size: 14px;
+	}
+
+	#city {
+		display: block;
   }
+
+  .mapContainer {
+    height: 150px;
+    width: 500px;
+    margin: auto;
+  }
+
+  .mapboxgl-canvas{
+    /* height: 00px; */
+    float: center;
+    margin: auto;
+    /* margin-left: 10px;
+    padding-left: 10px; */
+  }
+  
+  #chart {
+    /* height: 30%; */
+    width: 460px;
+    display: inline-block;
+    float: left;
+  }
+
+  #averageTable {
+    text-align: center;
+    margin: auto;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 460px;
+    height: 100px;
+    font-size: 12px;
+  }
+
+  #title {
+    font-size: 11px;
+  }
+  
+}
 
 /* Mobile phones */
 @media only screen and (max-width: 660px) {
 
   body {
-    color: #fcd9df;
+    padding: 15px 3px 3px 3px;
+    margin: 0px auto;
 	}
+
+	#pagetitle {
+		margin: auto;
+		text-align: center;
+    width: 300px;
+    font-size: 12px;
+  }
+
+  .mapContainer {
+    /* height: 150px; */
+    width: 300px;
+  }
+
+  .mapboxgl-canvas{
+    /* height: 40%; */
+    /* width: ; */
+    float: center;
+    margin: auto;
+  }
+
+  #chart {
+    height: 150px;
+    width: 300px;
+    display: inline-block;
+    float: left;
+  }
+
+  #averageTable {
+    text-align: center;
+    margin: auto;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 300px;
+    height: 120px;
+    font-size: 10px;
+  }
+
+  #title {
+    font-size: 11px;
+  }
+  
 }
 
 /* END OF MEDIA QUERIES */
