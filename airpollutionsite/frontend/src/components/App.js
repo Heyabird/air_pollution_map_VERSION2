@@ -115,12 +115,13 @@ class App extends React.Component {
     var uri = `http://localhost:8000/data/${id}`
     axios.get(uri)
     .then(response => {
-      console.log("retrieving average data: ", response.data)
+      console.log("retrieving average data: ", response.data);
+      var avgArr = response.data.avgs
       this.setState({
         averageData: [
-          { id: 'March', average_2018: response.data.avgs[0].average_pm, average_2019: response.data.avgs[3].average_pm, average_2020: response.data.avgs[6].average_pm },
-          { id: 'April', average_2018: response.data.avgs[1].average_pm, average_2019: response.data.avgs[4].average_pm, average_2020: response.data.avgs[7].average_pm},
-          { id: 'May', average_2018: response.data.avgs[2].average_pm, average_2019: response.data.avgs[5].average_pm, average_2020: response.data.avgs[8].average_pm }
+          { id: 'March', average_2018: (avgArr[0].average_pm).toFixed(2), average_2019: (avgArr[3].average_pm).toFixed(2), average_2020: (avgArr[6].average_pm).toFixed(2) },
+          { id: 'April', average_2018: (avgArr[1].average_pm).toFixed(2), average_2019: (avgArr[4].average_pm).toFixed(2), average_2020: (avgArr[7].average_pm).toFixed(2)},
+          { id: 'May', average_2018: (avgArr[2].average_pm).toFixed(2), average_2019: (avgArr[5].average_pm).toFixed(2), average_2020: (avgArr[8].average_pm).toFixed(2) }
         ]
     })
     .catch(function(err){
