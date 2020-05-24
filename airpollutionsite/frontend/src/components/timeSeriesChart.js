@@ -100,14 +100,15 @@ class TimeSeriesChart extends React.Component {
 			<>
       {/* hard to style canvas, so make a container and style that */}
         <div 
-          className="chart-container" 
-          style={{height: "70%", width: "90%", margin:'0px', float:'left'}}
+          // className="chart-container" 
+          // style={{height: "70%", width: "90%", margin:'0px'}}
           >
           {/* canvas is the chart */}
-          <canvas id="chart"></canvas>
-          <h4 id='title'>PM2.5 levels Over Time
+          <canvas id="chart" style={{width:"800px", height:"180px", display:"inline-block", float: "left"}}></canvas>
+          <br/>
+          <h5 id='title'>PM2.5 levels Over Time
           {/* {this.props.city} */}
-        </h4>
+        </h5>
         </div>
 
 			</>		

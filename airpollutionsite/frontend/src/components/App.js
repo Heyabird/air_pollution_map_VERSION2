@@ -165,11 +165,11 @@ class App extends React.Component {
       <>
         <div id="pagetitle">
           <h2>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> in <span style={{color: "red"}}>{city}</span>.</h2>
-          <h4><strong>To choose a city, click on one of the red markers in the map.</strong></h4>
+          <h5><strong>To choose a city, click on one of the red markers in the map.</strong></h5>
         </div>
         <br/>
         {/* mapContainer ref specifies that map should be drawn to the HtML page in a new <div> element */}
-        <div ref={el => this.mapContainer = el} className="mapContainer" /> 
+        <div ref={el => this.mapContainer = el} className="mapContainer" style={{height:"150px"}}/> 
         <br/>
         <div id="graphs">
           <TimeSeriesChart 
