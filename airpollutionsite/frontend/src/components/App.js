@@ -42,42 +42,33 @@ class App extends React.Component {
       zoom: 1,
       city: "_________________",
     };
-    // this.mapSetUp = this.mapSetUp.bind(this);
     this.getCityData = this.getCityData.bind(this);
+    this.getAverageData = this.getAverageData.bind(this);
     // this.updateCityData = this.updateCityData.bind(this);
     }
   
-  // mapSetUp(){
-  //   const map = new mapboxgl.Map({
-  //     container: this.mapContainer,
-  //     style: 'mapbox://styles/heyabird/ckaa8st6z07nr1ilousemiggu',
-  //     center: [this.state.lng, this.state.lat],
-  //     zoom: this.state.zoom
-  //     });
-  // }
-
 
   // receive city data from the server
   getCityData(city) {
     console.log("get city activated!")
     let id;
     // need to refractor below code; shortening city names
-    if(city === "Los Angeles, California, United States") {
-      id = 4
-    } else if (city === "San Diego, California, United States") {
-      id = 7
-    } else if (city === "New York, New York, United States") {
-      id = 6
-    } else if (city === "San Francisco, California, United States") {
-      id = 8
-    } else if (city === "New Delhi, Delhi, India") {
-      id = 5
-    } else if (city === "Beijing Shi, China") {
+    if (city === "Beijing Shi, China") {
       id = 1
+    } else if (city==="Chicago, Illinois, United States") {
+      id = 2
     } else if (city === "Houston, Texas, United States") {
       id = 3
-    }else if (city==="Chicago, Illinois, United States") {
-      id = 2
+    } else if(city === "Los Angeles, California, United States") {
+      id = 4
+    } else if (city === "New Delhi, Delhi, India") {
+      id = 5
+    } else if (city === "New York, New York, United States") {
+      id = 6
+    } else if (city === "San Diego, California, United States") {
+      id = 7
+    } else if (city === "San Francisco, California, United States") {
+      id = 8
     }
 
     // receive the data from the url using axios
@@ -112,27 +103,26 @@ class App extends React.Component {
   getAverageData(city) {
     console.log("get average data activated!")
     let id;
-    // need to refractor below code; shortening city names
-    if(city === "Los Angeles, California, United States") {
-      id = 4
-    } else if (city === "San Diego, California, United States") {
-      id = 7
-    } else if (city === "New York, New York, United States") {
-      id = 6
-    } else if (city === "San Francisco, California, United States") {
-      id = 8
-    } else if (city === "New Delhi, Delhi, India") {
-      id = 5
-    } else if (city === "Beijing Shi, China") {
-      id = 1
+    if (city === "Beijing Shi, China") {
+      id = 11
+    } else if (city==="Chicago, Illinois, United States") {
+      id = 22
     } else if (city === "Houston, Texas, United States") {
-      id = 3
-    }else if (city==="Chicago, Illinois, United States") {
-      id = 2
+      id = 33
+    } else if(city === "Los Angeles, California, United States") {
+      id = 44
+    } else if (city === "New Delhi, Delhi, India") {
+      id = 55
+    } else if (city === "New York, New York, United States") {
+      id = 66
+    } else if (city === "San Diego, California, United States") {
+      id = 77
+    } else if (city === "San Francisco, California, United States") {
+      id = 88
     }
 
     // receive the data from the url
-    var uri = `http://localhost:8000/data/average/${id}`
+    var uri = `http://localhost:8000/data/${id}`
     axios.get(uri)
     .then(response => {
       console.log("retrieving average data: ", response.data)
@@ -169,6 +159,7 @@ class App extends React.Component {
         .addTo(map);
       console.log("testing")
       this.getCityData(feature.properties.place_name);
+      this.getAverageData(feature.properties.place_name);
       // this.updateCityData();
       // this.test(feature.properties.place_name);
       this.setState({

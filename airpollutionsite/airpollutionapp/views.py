@@ -40,7 +40,7 @@ def get_air_quality_city(request, id, pk=None):
         )
     # March_avg = filtered.mean()
     # avg = filtered.mean(axis = 1, skipna = True)
-    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm2.5':i.PM25}) for i in filtered]
+    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm':i.PM25}) for i in filtered]
 
     # getting the averages
     avgs = MonthlyAvg.objects.filter(
@@ -48,7 +48,7 @@ def get_air_quality_city(request, id, pk=None):
         month__range=(3,5), 
         year__contains=2020
         )
-    needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm2.5':i.PM25}) for i in avgs]
+    needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm':i.PM25}) for i in avgs]
 
     if id==1 or id==2 or id==3 or id==4 or id==5 or id==6 or id==7 or id==8:
         return Response({"data": needed_info})
