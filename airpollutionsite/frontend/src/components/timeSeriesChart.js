@@ -39,6 +39,7 @@ class TimeSeriesChart extends React.Component {
             labels: xLabels,
             datasets: [{
                 label: 'pm2.5',
+                lineTension: 0,
                 data: this.props.cityData.chartData,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

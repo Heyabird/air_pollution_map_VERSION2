@@ -17,6 +17,17 @@ class AirQuality(models.Model):
     retrospective = models.TextField()
     city = models.TextField()
 
+class MonthlyAvg(models.Model):
+   class Meta:
+       db_table = 'monthly_avg' # This tells Django where the SQL table is
+       managed = False # Use this if table already exists
+                       # and doesn't need to be managed by Django
+   index = models.IntegerField(primary_key=True)
+   year = models.IntegerField()
+   month = models.IntegerField()
+   city = models.TextField()
+   PM25 = models.FloatField()
+
 
 # Testing out Models, following Django tutorial (https://docs.djangoproject.com/en/3.0/intro/tutorial01/) - will delete and change these later
 class Question(models.Model):

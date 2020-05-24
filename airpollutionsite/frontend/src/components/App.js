@@ -25,9 +25,9 @@ class App extends React.Component {
         city: 'Los Angeles',
         chartData: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         tableData: [
-          ['March', '❓', '❓', '❓'],
-          ['April', '❓', '❓', '❓'],
-          ['May', '❓', '❓', '❓!']
+          { id: 'March', average_2018:'❓', average_2019:'❓', average_2020:'❓'},
+          { id: 'April', average_2018:'❓', average_2019:'❓', average_2020:'❓'},
+          { id: 'May', average_2018:'❓', average_2019:'❓', average_2020:'❓'}
         ],
       },
       // externaldata takes in data from browser via axios call

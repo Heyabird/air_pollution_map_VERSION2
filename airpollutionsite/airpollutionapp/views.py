@@ -9,27 +9,27 @@ import numpy as np
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
-from airpollutionapp.models import AirQuality
+from airpollutionapp.models import AirQuality, MonthlyAvg
 
 # https://www.django-rest-framework.org/api-guide/views/#api_view
 @api_view(('GET',))
 def get_air_quality_city(request, id, pk=None):
     city='San Diego'
-    if id==1:
+    if id==1 or id==11:
         city='Beijing'
-    elif id==2:
+    elif id==2 or id==22:
         city='Chicago'
-    elif id==3:
+    elif id==3 or id==33:
         city='Houston' 
-    elif id==4:
+    elif id==4 or id==44:
         city='Los Angeles'
-    elif id==5:
+    elif id==5 or id==55:
         city='New Delhi'
-    elif id==6:
+    elif id==6 or id==66:
         city='New York'
-    elif id==7:
+    elif id==7 or id==77:
         city='San Diego'
-    elif id==8:
+    elif id==8 or id==88:
         city='San Francisco'   
     else:
         return HttpResponse("That's not a valid city...")
@@ -40,8 +40,23 @@ def get_air_quality_city(request, id, pk=None):
         )
     # March_avg = filtered.mean()
     # avg = filtered.mean(axis = 1, skipna = True)
-    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm':i.PM25}) for i in filtered]
-    return Response({"data": needed_info})
+    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm2.5':i.PM25}) for i in filtered]
+
+    # getting the averages
+    avgs = MonthlyAvg.objects.filter(
+        city__contains=city, 
+        month__range=(3,5), 
+        year__contains=2020
+        )
+    needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm2.5':i.PM25, 'monthly_means': i.monthly_means}) for i in avgs]
+
+    if id==7:
+        return Response({"data": needed_info})
+    else:
+        # print([(i.year,i.month,i.PM25) for i in avgs])
+        return Response({"avgs": needed_avg})
+
+        # return Response({"data": needed_avg})
 
 # @api_view(('GET',))
 # def get_monthly_average(request, id, pk=None):
