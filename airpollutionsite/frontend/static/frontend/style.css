@@ -5,7 +5,7 @@ body {
 	font-family: "roboto light";
 	display: flex;
 	color: #2e2e2e;
-	background-color: #ececec;
+	background-color: red;
 	float: center;
 }
 
@@ -23,6 +23,7 @@ body {
 /*** MAP ***/
 
 .mapContainer {
+	height: 150px;
 	/* position: absolute; */
 	/* top: 0;
 	right: 0;
@@ -79,8 +80,10 @@ body {
 
 
 #chart {
-	width: 500px;
+	width: 800px;
+	height: 180px;
 	display: inline-block;
+	float: left;
 }
 
 #graphs {

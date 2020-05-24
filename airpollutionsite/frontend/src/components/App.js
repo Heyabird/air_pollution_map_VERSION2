@@ -15,7 +15,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // this is a dummy data... eventually want to turn the actual external data in to this particular object format so that it is easy to pull into charts
       averageData: [
         { id: 'March', average_2018: '❓', average_2019: '❓', average_2020: '❓' },
         { id: 'April', average_2018: '❓', average_2019: '❓', average_2020: '❓'},
@@ -32,7 +31,6 @@ class App extends React.Component {
     };
     this.getCityData = this.getCityData.bind(this);
     this.getAverageData = this.getAverageData.bind(this);
-    // this.updateCityData = this.updateCityData.bind(this);
     }
   
 
@@ -134,6 +132,8 @@ class App extends React.Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
       });
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl());
       
     // activate pop up function
     map.on('click', (e) => {
