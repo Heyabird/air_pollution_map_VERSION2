@@ -17,18 +17,13 @@ class App extends React.Component {
     this.state = {
       // this is a dummy data... eventually want to turn the actual external data in to this particular object format so that it is easy to pull into charts
       averageData: [
-        { id: 'March', average_2018: 4, average_2019: 3, average_2020: 5 },
-        { id: 'April', average_2018: 3, average_2019: 2, average_2020: 9},
-        { id: 'May', average_2018: 5, average_2019: 3, average_2020: 10 }
+        { id: 'March', average_2018: '❓', average_2019: '❓', average_2020: '❓' },
+        { id: 'April', average_2018: '❓', average_2019: '❓', average_2020: '❓'},
+        { id: 'May', average_2018: '❓', average_2019: '❓', average_2020: '❓' }
       ],
       cityData: {
         city: 'Los Angeles',
         chartData: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        tableData: [
-          { id: 'March', average_2018:'❓', average_2019:'❓', average_2020:'❓'},
-          { id: 'April', average_2018:'❓', average_2019:'❓', average_2020:'❓'},
-          { id: 'May', average_2018:'❓', average_2019:'❓', average_2020:'❓'}
-        ],
       },
       // externaldata takes in data from browser via axios call
       externaldata: "",
@@ -123,9 +118,9 @@ class App extends React.Component {
       console.log("retrieving average data: ", response.data)
       this.setState({
         averageData: [
-          { id: 'March', average_2018: 1, average_2019: 1, average_2020: 1 },
-          { id: 'April', average_2018: 1, average_2019: 1, average_2020: 1},
-          { id: 'May', average_2018: 1, average_2019: 1, average_2020: 1 }
+          { id: 'March', average_2018: response.data.avgs[0].average_pm, average_2019: response.data.avgs[3].average_pm, average_2020: response.data.avgs[6].average_pm },
+          { id: 'April', average_2018: response.data.avgs[1].average_pm, average_2019: response.data.avgs[4].average_pm, average_2020: response.data.avgs[7].average_pm},
+          { id: 'May', average_2018: response.data.avgs[2].average_pm, average_2019: response.data.avgs[5].average_pm, average_2020: response.data.avgs[8].average_pm }
         ]
     })
     .catch(function(err){

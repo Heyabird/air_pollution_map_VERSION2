@@ -46,7 +46,7 @@ def get_air_quality_city(request, id, pk=None):
     avgs = MonthlyAvg.objects.filter(
         city__contains=city, 
         month__range=(3,5), 
-        year__contains=2020
+        year__range=(2018,2020)
         )
     needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm':i.PM25}) for i in avgs]
 
