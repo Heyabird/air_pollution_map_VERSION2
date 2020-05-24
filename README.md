@@ -1,8 +1,10 @@
 # README: Air Pollution App
 
+note: this is a version 2 of the air pollution map.
+
 ## A. Getting Started
 ### In this project, I used:
-* venv (python3 -m venv venv)
+* venv (virtual environment)
 * Python 3.7.7
 * Django 3.0.6
 * pip
@@ -18,7 +20,7 @@
 1. install Python 
 2. install pip (https://pip.pypa.io/en/stable/installing/)
 2. install Django ($ python -m pip install Django)
-3. cd into the github repo folder, and set up virtual environment (python3 -m venv venv)
+3. cd into the github repo folder, and set up virtual environment ($ python3 -m venv venv)
 4. activate virtual environment ($ source venv/bin/activate)-mac / ($venv\Scripts\activate)-windows
 5. download node.js
 6. download npm
@@ -40,7 +42,8 @@ To implement tests(wip), you should run:
 
 --
 ### Important Links: 
-* wireframe sketch: https://drive.google.com/file/d/1MBpl6I5hwBFqAfZu_hOuzZqy3TOsYi43/view?usp=sharing
+* wireframes (figma): https://www.figma.com/file/rooFWmkVoKMLUCL2Di6sqT/Air-Pollution-App?node-id=0%3A1
 * project notes (developer + user stories, resources): https://docs.google.com/spreadsheets/d/1pTjB6Meel2vV00nJnJUgZDhO8YE8yjBbbNYumgL_yXQ/edit?usp=sharing
+* github repo: https://github.com/Heyabird/air_pollution_map_VERSION2
 
 
