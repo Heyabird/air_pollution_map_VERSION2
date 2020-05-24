@@ -28,8 +28,11 @@ class TimeSeriesChart extends React.Component {
     const ctx = document.getElementById('chart').getContext('2d');
     // make a list of numbers from 2004 to 2020
     var list = [0];
-    for (var i = 2004; i <= 2020; i++) {
-        list.push(i);
+    // for (var i = 2004; i <= 2020; i++) {
+    //     list.push(i);
+    // }
+    for (var i=0; i<=this.props.cityData.chartData.length; i++) {
+      list.push(i);
     }
     console.log(list);
     const xLabels = list;
@@ -61,14 +64,17 @@ class TimeSeriesChart extends React.Component {
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      // Include a dollar sign in the ticks
+                      callback: function(value, index, values) {
+                          return value ;
+                      }
+                  }
+              }]
+          }
+      }
     });
   }
 

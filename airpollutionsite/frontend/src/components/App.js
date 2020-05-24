@@ -25,13 +25,6 @@ class App extends React.Component {
         city: 'Los Angeles',
         chartData: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       },
-      // externaldata takes in data from browser via axios call
-      externaldata: "",
-      // mockAveragePM: [
-      //   ['March', 30, 40, 50],
-      //   ['April', 10, 20, 30],
-      //   ['May', 33, 22, 33]
-      // ],  
       lng: -0,
       lat: 35,
       zoom: 1,
@@ -124,9 +117,9 @@ class App extends React.Component {
           { id: 'May', average_2018: (avgArr[2].average_pm).toFixed(2), average_2019: (avgArr[5].average_pm).toFixed(2), average_2020: (avgArr[8].average_pm).toFixed(2) }
         ]
     })
-    .catch(function(err){
-      console.log(err)
-    })
+    // .catch(function(err){
+    //   console.log(err)
+    // })
   })
 }
   
