@@ -183,7 +183,7 @@ class App extends React.Component {
       <>
         <div id="pagetitle">
           {/* make the title of the page change once the city is clicked */}
-          <h3>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}><strong>{city}</strong></span>.</span></h3>
+          <h3>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "rgb(243, 69, 69)"}}><strong>{city}</strong></span>.</span></h3>
           <h5><strong>To choose a city, click on one of the red markers in the map.</strong></h5>
         </div>
         <br/>

@@ -106,7 +106,7 @@ class TimeSeriesChart extends React.Component {
           }}
           ></canvas>
           <br/>
-          <h5 id='title'><strong>{cityName}</strong> - PM2.5 levels Over Time
+          <h5 id='title'><span style={{color: "rgb(243, 69, 69)"}}><strong>{cityName}</strong></span> - PM2.5 levels Over Time
           {/* {this.props.city} */}
         </h5>
         </div>
