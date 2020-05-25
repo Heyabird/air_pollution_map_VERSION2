@@ -13,6 +13,7 @@ note: this is a version 2 of the air pollution map.
 * babel & Webpack
 * pandas
 * Sqlalchemy
+* Jest
 
 -- 
 ### To run this project:
