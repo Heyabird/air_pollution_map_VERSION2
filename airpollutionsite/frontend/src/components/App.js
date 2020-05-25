@@ -27,9 +27,12 @@ class App extends React.Component {
         chartData: [30,30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
       },
       // starting lng, lat, and zoom for the map
+      // lng: -100,
+      // lat: 35,
+      // zoom: 0.5,
       lng: -100,
       lat: 35,
-      zoom: 0.5,
+      zoom: 3,
       city: "_________________",
     };
     this.getCityData = this.getCityData.bind(this);
