@@ -19,27 +19,28 @@ note: this is a version 2 of the air pollution map.
 
 -- 
 ### To run this project:
-1. install Python and install Django ($ python -m pip install Django)
+1. install Python and install Django ($ python3 -m pip install Django)
 2. install pip (https://pip.pypa.io/en/stable/installing/)
 3. cd into the github repo folder, and set up virtual environment ($ python3 -m venv venv)
 4. activate virtual environment ($ source venv/bin/activate)-mac / ($venv\Scripts\activate)-windows
 5. download node.js
-6. download npm and run npm install ($npm install)
-7. install pandas, numpy, sqlalchemy ($ pip install pandas numpy sqlalchemy)
+6. download npm and run npm install ($ npm install)
+7. install pandas, numpy, sqlalchemy, and requests ($ pip install pandas numpy sqlalchemy requests)
 8. install drf ($ pip install djangorestframework)
-9. pip install requests 
-10. create migrations ($ python manage.py makemigrations) and apply migrations ($ python manage.py migrate)
-11. Load all 8 data files into your local python shell. To do, so, cd into airpollutionsite, then run these commands:
-* python manage.py shell < airpollutionsite/load_data/load_data_bj.py
-* python manage.py shell < airpollutionsite/load_data/load_data_ch.py
-* python manage.py shell < airpollutionsite/load_data/load_data_ho.py
-* python manage.py shell < airpollutionsite/load_data/load_data_la.py
-* python manage.py shell < airpollutionsite/load_data/load_data_nd.py
-* python manage.py shell < airpollutionsite/load_data/load_data_ny.py
-* python manage.py shell < airpollutionsite/load_data/load_data_sd.py
-* python manage.py shell < airpollutionsite/load_data/load_data_sf.py
-Then,
-12. run server ($ python manage.py runserver)
+9. create migrations ($ python3 manage.py makemigrations)
+10. apply migrations ($ python3 manage.py migrate)
+11. Load all the 8 data files into your local python shell. To do, so, cd into airpollutionsite (the outer folder), then run these commands:
+* python3 manage.py shell < airpollutionsite/load_data/load_data_bj.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_ch.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_ho.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_la.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_nd.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_ny.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_sd.py
+* python3 manage.py shell < airpollutionsite/load_data/load_data_sf.py
+- without running the commands above, you won't be able to see the data
+- to check if the data are loaded, you can go to localhost:8000/data/{id} where id is a number between 1 and 8 or 11, 22, 33, 44, 55, 66, 77, or 88
+12. Then, run server ($ python3 manage.py runserver)
 13. if any changes applied to frontend, run npm run dev in frontend folder ($ npm run dev)
 * if $ npm run dev doesn't work, install axios ($ npm install axios react-dom --save)
 14. make sure you are on venv all the time
