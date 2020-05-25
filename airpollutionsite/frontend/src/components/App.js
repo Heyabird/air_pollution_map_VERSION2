@@ -24,7 +24,7 @@ class App extends React.Component {
       // starting data for time-series chart
       cityData: {
         city: 'Los Angeles',
-        chartData: [30,30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+        chartData: [30,30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
       },
       // starting lng, lat, and zoom for the map
       lng: -100,
@@ -126,6 +126,14 @@ class App extends React.Component {
     // })
   })
 }
+
+  selectCity(city) {
+    this.getCityData(feature.properties.place_name);
+    this.getAverageData(feature.properties.place_name);
+    this.setState({
+      city: feature.properties.place_name
+    });
+  }
   
 
 
@@ -174,7 +182,7 @@ class App extends React.Component {
       <>
         <div id="pagetitle">
           {/* make the title of the page change once the city is clicked */}
-          <p>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}>{city}</span>!</span></p>
+          <p>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}>{city}</span>.</span></p>
           <h5><strong>To choose a city, click on one of the red markers in the map.</strong></h5>
         </div>
         <br/>

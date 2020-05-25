@@ -49,17 +49,27 @@ body {
 	 
 .mapboxgl-popup {
 	max-width: 200px;
-	}
+  }
+  
+div.mapboxgl-popup-content {
+  max-height: 200px;
+  width: 100px;
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 10px;
+  font-family: 'roboto';
+  border: 1px solid rgb(255, 0, 0);
+  text-align: center;
+}
 
+h3.mapboxgl-popup-content {
+  margin: 0px;
+}
 
 /*** CHART and TABLE ***/
-
-
-/* .chartjs-render-monitor {
-	height:600px;
-	width: 1000px;
-} */
-
 
 #chart {
 	height: 100px;
@@ -144,8 +154,14 @@ a:hover{
 }
 
 
-/* MEDIA QUERIES BELOW */
 
+
+/*************************/
+/* MEDIA QUERIES BELOW */
+/*************************/
+
+
+/* MEDIA QUERY FOR */
 /* Tablets */
 @media (max-width: 1000px) {
 	body {
@@ -200,6 +216,7 @@ a:hover{
   
 }
 
+/* MEDIA QUERY FOR */
 /* Mobile phones */
 @media only screen and (max-width: 660px) {
 

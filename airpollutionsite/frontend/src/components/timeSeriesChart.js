@@ -1,7 +1,6 @@
 import React from "react";
 
 class TimeSeriesChart extends React.Component {
-	// const myChartRef = this.chartRef.current.getContext("2d");
   constructor (props){
     super(props);
   
@@ -90,7 +89,7 @@ class TimeSeriesChart extends React.Component {
 
 	render() {
     console.log(this.state.city);
-
+    var cityName = this.props.city.slice("")[0]
     return (
 			<>
       {/* hard to style canvas, so make a container and style that */}
@@ -106,7 +105,7 @@ class TimeSeriesChart extends React.Component {
           }}
           ></canvas>
           <br/>
-          <h5 id='title'>PM2.5 levels Over Time
+          <h5 id='title'>{cityName} PM2.5 levels Over Time
           {/* {this.props.city} */}
         </h5>
         </div>
