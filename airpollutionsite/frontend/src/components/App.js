@@ -33,7 +33,7 @@ class App extends React.Component {
       // zoom: 0.5,
       lng: -100,
       lat: 35,
-      zoom: 3,
+      zoom: 2,
       city: "_________________",
     };
     this.getCityData = this.getCityData.bind(this);
@@ -70,19 +70,30 @@ class App extends React.Component {
     .then(response => {
       console.log("retrieving city data: ", response.data)
       var arrPM = [];
-      // extract all the PM2.5 values from the city data and put into an array
-      for(let i=0; i<response.data.data.length; i++) {
+      var arrTime = [];
+      var objPM = {};
+      var key_value = {};
+      // extract all the PM2.5 values from the city data per day and put into an array
+      for(let i=0; i<response.data.data.length; i+=24) {
+        // get time as year.month.day and put it in an array
+        var time = response.data.data[i].year + "." + response.data.data[i].month + "." + response.data.data[i].day
+        arrTime.push(time)
+        // get all the pm2.5 values into an array
         arrPM.push(response.data.data[i].pm)
-        // console.log("arrPM being pushed:", arrPM)
       }
-      console.log("arrPM:", arrPM);
+
+      // zipping the time values with the pm values as key-value pairs inside an object
+      var result = {};
+      arrTime.forEach((arrTime, i) => result[arrTime] = arrPM[i]);
+      console.log("result: ", result);
+      
       // update the time-series chart data
       this.setState({
         cityData: {
           city: this.state.city,
-          chartData: arrPM,
+          chartData: result,
         }
-      }, () => console.log("update city data state"))
+      }, () => console.log("chartData: ", this.state.cityData.chartData))
     })
     .catch(function(err){
       console.log(err)
@@ -208,6 +219,7 @@ class App extends React.Component {
             averageData={averageData}
             cityData={cityData}
             city={city}
+            cityName={cityName}
             />
         </div>
       </>

@@ -40,7 +40,7 @@ console.log("cityName: ", cityName)
             </tbody>
         </table>
       {/* </div> */}
-      <h5 id='title'><span style={{color: "red"}}><strong>{cityName}</strong></span> - Average PM2.5 Levels</h5>
+      <h5 id='title'><span style={{color: "red"}}><strong>{props.cityName}</strong></span> - Average PM2.5 Levels</h5>
      
     </>
   );

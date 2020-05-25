@@ -34,8 +34,8 @@ def get_air_quality_city(request, id, pk=None):
     else:
         return HttpResponse("That's not a valid city...")
     filtered=AirQuality.objects.filter(
-        year__contains='2016', 
-        month__contains='3',
+        # year__contains='2016', 
+        # month__contains='3',
         city__contains=city
         )
     # March_avg = filtered.mean()

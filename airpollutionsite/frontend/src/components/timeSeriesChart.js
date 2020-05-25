@@ -20,7 +20,7 @@ class TimeSeriesChart extends React.Component {
     // make a list of numbers from 2004 to 2020
     var list = [0];
     // pushing in the length of chartData.
-    for (var i=0; i<=this.props.cityData.chartData.length; i++) {
+    for (var i=1; i<=this.props.cityData.chartData.length; i++) {
       list.push(i);
     }
     console.log(list);
