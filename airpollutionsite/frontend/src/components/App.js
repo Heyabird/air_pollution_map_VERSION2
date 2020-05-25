@@ -24,13 +24,12 @@ class App extends React.Component {
       // starting data for time-series chart
       cityData: {
         city: 'Los Angeles',
-        chartData: [30,30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+        // making dummy data for time series chart...
+        chartData: [{2004:30},{2005:30},{2006:30},{2007:30},{2008:30},{2009:30},{2010:30},{2011:30},{2012:30},{2013:30},{2014:30},{2015:30},{2016:30},{2017:30},{2018:30},{2019:30},{2020:30}]
       },
+      arrTime: [],
+      arrPM: [],
       cityName: "",
-      // starting lng, lat, and zoom for the map
-      // lng: -100,
-      // lat: 35,
-      // zoom: 0.5,
       lng: -100,
       lat: 35,
       zoom: 2,
@@ -73,10 +72,10 @@ class App extends React.Component {
       var arrTime = [];
       var objPM = {};
       var key_value = {};
-      // extract all the PM2.5 values from the city data per day and put into an array
-      for(let i=0; i<response.data.data.length; i+=24) {
+      // extract all the PM2.5 values from the city data per week(=168hours) and put into an array
+      for(let i=0; i<response.data.data.length; i+=168) {
         // get time as year.month.day and put it in an array
-        var time = response.data.data[i].year + "." + response.data.data[i].month + "." + response.data.data[i].day
+        var time = response.data.data[i].year + "." + response.data.data[i].month
         arrTime.push(time)
         // get all the pm2.5 values into an array
         arrPM.push(response.data.data[i].pm)
@@ -86,13 +85,16 @@ class App extends React.Component {
       var result = {};
       arrTime.forEach((arrTime, i) => result[arrTime] = arrPM[i]);
       console.log("result: ", result);
+      console.log()
       
       // update the time-series chart data
       this.setState({
         cityData: {
           city: this.state.city,
           chartData: result,
-        }
+        },
+        arrTime: arrTime,
+        arrPM: arrPM
       }, () => console.log("chartData: ", this.state.cityData.chartData))
     })
     .catch(function(err){
@@ -195,7 +197,7 @@ class App extends React.Component {
 
   render() {   
     // destructuring states
-    const { city, cityData, averageData, cityName } = this.state;
+    const { city, cityData, averageData, cityName, arrTime, arrPM } = this.state;
     return (
       <>
         <div id="pagetitle">
@@ -203,7 +205,6 @@ class App extends React.Component {
           <h3>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "rgb(243, 69, 69)"}}><strong>{city}</strong></span>.</span></h3>
           <h5><strong>To choose a city, click on one of the red markers in the map.</strong></h5>
         </div>
-        <br/>
         {/* mapContainer ref specifies that map should be drawn to the HtML page in a new <div> element */}
         <div ref={el => this.mapContainer = el} className="mapContainer" 
         // style={{height:"150px"}}
@@ -213,7 +214,9 @@ class App extends React.Component {
           <TimeSeriesChart 
             city={city}
             cityData={cityData}
-            cityName={cityName}/>
+            cityName={cityName}
+            arrTime={arrTime}
+            arrPM={arrPM}/>
           <AverageTable 
             city={city}
             averageData={averageData}

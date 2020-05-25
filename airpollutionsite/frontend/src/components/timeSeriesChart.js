@@ -18,12 +18,13 @@ class TimeSeriesChart extends React.Component {
     // eventually want to convert to a more complex type of graph
     const ctx = document.getElementById('chart').getContext('2d');
     // make a list of numbers from 2004 to 2020
-    var list = [0];
-    // pushing in the length of chartData.
-    for (var i=1; i<=this.props.cityData.chartData.length; i++) {
-      list.push(i);
-    }
-    console.log(list);
+    // var list = [0];
+    // // pushing in the length of chartData.
+    // for (var i=1; i<=this.props.cityData.chartData.length; i++) {
+    //   list.push(i);
+    // }
+    // console.log(list);
+    var list = this.props.arrTime
     // currently, the xLabels are the length of chartData.
     // need to figure out a way to still use this label ticks while changing the label as year values
     const xLabels = list;
@@ -35,7 +36,8 @@ class TimeSeriesChart extends React.Component {
                 label: 'pm2.5',
                 // make line tension 0 to not have any curves
                 lineTension: 0,
-                data: this.props.cityData.chartData,
+                pointRadius: 2,
+                data: this.props.arrPM,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -56,6 +58,11 @@ class TimeSeriesChart extends React.Component {
             }]
         },
         options: {
+          legend: {
+            labels: {
+              fontSize: 10
+            }
+          },
           scales: {
               xAxes: [{
                   ticks: {
@@ -101,7 +108,7 @@ class TimeSeriesChart extends React.Component {
           {/* canvas is the chart */}
           <canvas id="chart" 
           style={{
-          height:"130px",
+          height:"175px",
           // display:"inline-block", float: "left"
           }}
           ></canvas>
