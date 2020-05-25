@@ -27,6 +27,9 @@ function renderTableHeader() {
   })
 }
 
+var cityName = props.city.split(",")[0]
+console.log("cityName: ", cityName)
+
   return (
     <>
       {/* <div> */}
@@ -37,7 +40,7 @@ function renderTableHeader() {
             </tbody>
         </table>
       {/* </div> */}
-      <h5 id='title'>Average PM2.5 Levels</h5>
+      <h5 id='title'><strong>{cityName}</strong> - Average PM2.5 Levels</h5>
      
     </>
   );

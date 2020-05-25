@@ -162,7 +162,8 @@ class App extends React.Component {
       // make a pop up function
       var popup = new mapboxgl.Popup({ offset: [0, -15] })
         .setLngLat(feature.geometry.coordinates)
-        .setHTML('<h3>' + feature.properties.place_name + '</h3>')
+        // the content inside the pop up will be just the name of the city
+        .setHTML('<h3>' + feature.properties.place_name.split(",")[0] + '</h3>')
         .addTo(map);
       console.log("testing");
       // receive time-series and average table data everytime the page loads
@@ -182,7 +183,7 @@ class App extends React.Component {
       <>
         <div id="pagetitle">
           {/* make the title of the page change once the city is clicked */}
-          <p>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}>{city}</span>.</span></p>
+          <h3>I want to see the <a href="https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm" target="_blank">PM2.5 Values</a> <span id="city"> in <span style={{color: "red"}}><strong>{city}</strong></span>.</span></h3>
           <h5><strong>To choose a city, click on one of the red markers in the map.</strong></h5>
         </div>
         <br/>
