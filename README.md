@@ -19,14 +19,12 @@ note: this is a version 2 of the air pollution map.
 
 -- 
 ### To run this project:
-1. install Python 
+1. install Python and install Django ($ python -m pip install Django)
 2. install pip (https://pip.pypa.io/en/stable/installing/)
-2. install Django ($ python -m pip install Django)
 3. cd into the github repo folder, and set up virtual environment ($ python3 -m venv venv)
 4. activate virtual environment ($ source venv/bin/activate)-mac / ($venv\Scripts\activate)-windows
 5. download node.js
-6. download npm
-6. run npm install ($npm install)
+6. download npm and run npm install ($npm install)
 7. install pandas, numpy, sqlalchemy ($ pip install pandas numpy sqlalchemy)
 8. install drf ($ pip install djangorestframework)
 9. pip install requests 
