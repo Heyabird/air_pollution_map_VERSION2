@@ -26,6 +26,7 @@ class App extends React.Component {
         city: 'Los Angeles',
         chartData: [30,30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
       },
+      cityName: "",
       // starting lng, lat, and zoom for the map
       // lng: -100,
       // lat: 35,
@@ -162,11 +163,14 @@ class App extends React.Component {
         return;
       }
       var feature = features[0];
+      this.setState({
+        cityName: feature.properties.place_name.split(",")[0]
+      })
       // make a pop up function
       var popup = new mapboxgl.Popup({ offset: [0, -15] })
         .setLngLat(feature.geometry.coordinates)
         // the content inside the pop up will be just the name of the city
-        .setHTML('<h3>' + feature.properties.place_name.split(",")[0] + '</h3>')
+        .setHTML('<h3>' + this.state.cityName + '</h3>')
         .addTo(map);
       console.log("testing");
       // receive time-series and average table data everytime the page loads
@@ -174,14 +178,13 @@ class App extends React.Component {
       this.getAverageData(feature.properties.place_name);
       this.setState({
         city: feature.properties.place_name,
-        // cityData:
       });
     });
   }
 
   render() {   
     // destructuring states
-    const { city, cityData, averageData } = this.state;
+    const { city, cityData, averageData, cityName } = this.state;
     return (
       <>
         <div id="pagetitle">
@@ -198,12 +201,13 @@ class App extends React.Component {
         <div id="graphs">
           <TimeSeriesChart 
             city={city}
-            cityData={cityData}/>
+            cityData={cityData}
+            cityName={cityName}/>
           <AverageTable 
             city={city}
             averageData={averageData}
-            // averagePM={mockAveragePM}
             cityData={cityData}
+            city={city}
             />
         </div>
       </>

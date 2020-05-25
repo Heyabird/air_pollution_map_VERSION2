@@ -89,8 +89,8 @@ class TimeSeriesChart extends React.Component {
 
 	render() {
     console.log("this.props.city: ", this.props.city);
-    var cityName = this.props.city.split(",")[0]
-    console.log("cityName: ", cityName)
+    // var cityName = this.props.city
+    // console.log("cityName: ", cityName)
     return (
 			<>
       {/* hard to style canvas, so make a container and style that */}
@@ -106,7 +106,7 @@ class TimeSeriesChart extends React.Component {
           }}
           ></canvas>
           <br/>
-          <h5 id='title'><span style={{color: "rgb(243, 69, 69)"}}><strong>{cityName}</strong></span> - PM2.5 levels Over Time
+          <h5 id='title'><span style={{color: "rgb(243, 69, 69)"}}><strong>{this.props.cityName}</strong></span> - PM2.5 levels Over Time
           {/* {this.props.city} */}
         </h5>
         </div>

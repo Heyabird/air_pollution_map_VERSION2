@@ -14,6 +14,7 @@ note: this is a version 2 of the air pollution map.
 * pandas
 * Sqlalchemy
 * Jest
+* Enzyme
 
 -- 
 ### To run this project:
@@ -39,6 +40,8 @@ To implement tests(wip), you should run:
 * pip install coverage
 * coverage run --source='.' manage.py test (run coverage)
 * coverage html (generate report)
+For Jest/Enzyme test:
+* go to the frontend folder, and run 'npm test'
 
 --
 ### Important Links: 
