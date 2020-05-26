@@ -27,9 +27,9 @@ note: this is a version 2 of the air pollution map.
 6. download npm and run npm install ($ npm install)
 7. install pandas, numpy, sqlalchemy, and requests ($ pip install pandas numpy sqlalchemy requests)
 8. install drf ($ pip install djangorestframework)
-9. create migrations ($ python3 manage.py makemigrations)
-10. apply migrations ($ python3 manage.py migrate)
-11. Load all the 8 data files into your local python shell. To do, so, cd into airpollutionsite (the outer folder), then run these commands:
+9. create migrations ($ python3 manage.py makemigrations) in the outer airpollutionsite folder
+10. apply migrations ($ python3 manage.py migrate) in the outer airpollutionsite folder
+11. Load all the 8 data files into your local python shell. To do, in the outer airpollutionsite folder, then run these commands:
 * python3 manage.py shell < airpollutionsite/load_data/load_data_bj.py
 * python3 manage.py shell < airpollutionsite/load_data/load_data_ch.py
 * python3 manage.py shell < airpollutionsite/load_data/load_data_ho.py
@@ -40,7 +40,8 @@ note: this is a version 2 of the air pollution map.
 * python3 manage.py shell < airpollutionsite/load_data/load_data_sf.py
 - without running the commands above, you won't be able to see the data
 - to check if the data are loaded, you can go to localhost:8000/data/{id} where id is a number between 1 and 8 or 11, 22, 33, 44, 55, 66, 77, or 88
-12. Then, run server ($ python3 manage.py runserver)
+- if you don't see any data there, follow this instruction to remake the database: (https://stackoverflow.com/questions/42150499/how-do-i-delete-db-sqlite3-in-django-1-9-to-start-from-scratch) and redo the load_data commands
+12. Then, run server ($ python3 manage.py runserver) -- you will see it on localhost:8000
 13. if any changes applied to frontend, run npm run dev in frontend folder ($ npm run dev)
 * if $ npm run dev doesn't work, install axios ($ npm install axios react-dom --save)
 14. make sure you are on venv all the time
