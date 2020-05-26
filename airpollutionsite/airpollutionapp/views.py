@@ -40,7 +40,7 @@ def get_air_quality_city(request, id, pk=None):
         )
     # March_avg = filtered.mean()
     # avg = filtered.mean(axis = 1, skipna = True)
-    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month.zfill(2), 'day':i.day.zfill(2), 'hour':i.hour.zfill(2), 'pm':i.PM25}) for i in filtered]
+    needed_info = [({'city':i.city, 'year':i.year, 'month':i.month, 'day':i.day, 'hour':i.hour, 'pm':i.PM25}) for i in filtered]
 
     # getting the averages
     avgs = MonthlyAvg.objects.filter(
