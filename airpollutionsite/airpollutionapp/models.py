@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
+# model for time-series chart
 class AirQuality(models.Model):
     class Meta:
         db_table = 'air_quality' # This tells Django where the SQL table is
@@ -17,6 +18,7 @@ class AirQuality(models.Model):
     retrospective = models.TextField()
     city = models.TextField()
 
+# model for monhtly average pm2.5 table
 class MonthlyAvg(models.Model):
    class Meta:
        db_table = 'monthly_avg' # This tells Django where the SQL table is
