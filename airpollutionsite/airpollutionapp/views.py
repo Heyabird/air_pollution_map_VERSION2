@@ -14,6 +14,9 @@ from airpollutionapp.models import AirQuality, MonthlyAvg
 # https://www.django-rest-framework.org/api-guide/views/#api_view
 @api_view(('GET',))
 def get_air_quality_city(request, id, pk=None):
+    # each city is matched with two id numbers (single and double digit numbers)
+    # the single digit numbers give path to db for time-series chart
+    # the double digit numbers give path to db for average pm2.5 values table
     city='San Diego'
     if id==1 or id==11:
         city='Beijing'
@@ -38,8 +41,7 @@ def get_air_quality_city(request, id, pk=None):
         # month__contains='3',
         city__contains=city
         )
-    # March_avg = filtered.mean()
-    # avg = filtered.mean(axis = 1, skipna = True)
+        # define what columns and data we need
     needed_info = [({'city':i.city, 'year':i.year, 'month':i.month, 'day':i.day, 'hour':i.hour, 'pm':i.PM25}) for i in filtered]
 
     # getting the averages
@@ -50,44 +52,12 @@ def get_air_quality_city(request, id, pk=None):
         )
     needed_avg = [({'city':city, 'year':i.year, 'month':i.month, 'average_pm':i.PM25}) for i in avgs]
 
+    # respond with a different data depending on whether the id is single or double digits
     if id==1 or id==2 or id==3 or id==4 or id==5 or id==6 or id==7 or id==8:
         return Response({"data": needed_info})
     elif id==11 or id==22 or id==33 or id==44 or id==55 or id==66 or id==77 or id==88:
         # print([(i.year,i.month,i.PM25) for i in avgs])
         return Response({"avgs": needed_avg})
-
-
-# A bit of a brute force way to have 8 methods for 8 cities, so definitely try to find a more graceful way to pull in urls in 1 method :/ but for now, it will do...
-# LOS ANGELES
-# def receive_data_la(req):
-#     print(req)
-#     city = 'Los Angeles'
-#     url = 'http://berkeleyearth.lbl.gov/air-quality/maps/cities/United_States_of_America/California/Los_Angeles.txt' 
-#     response = requests.get(url)
-#     # save city name
-#     data = pd.read_csv(url, header=9, sep='\t|,', engine='python')
-#     data['Year'] = data['% Year'].replace('%', ' ', regex=True)
-#     data = data.drop(data.columns[[1,2,3,5,6]], axis=1)
-#     obj = data.to_json()
-
-#     # For Average Table
-#     data2 = pd.read_csv("http://berkeleyearth.lbl.gov/air-quality/maps/cities/United_States_of_America/California/San_Diego.txt", 
-#                    header=9, 
-#                    sep='\t|,', 
-#                    names=['Year', 'Month', 'Day', 'UTC Hour', 'PM2.5', 'PM10_mask', 'Retrospective'])
-#     Year_2020 = data2['Year'] == 2020
-#     March = data2['Month'] == 3
-#     April = data2['Month'] == 4
-#     May = data2['Month'] == 5
-
-#     # Getting the AVG value
-#     Year2020_March_AVG = data.loc[Year_2020 & March]['PM2.5'].mean()
-#     Year2020_April_AVG = data.loc[Year_2020 & April]['PM2.5'].mean()
-#     Year2020_May_AVG = data.loc[Year_2020 & May]['PM2.5'].mean()
-#     print (Year2020_March_AVG)
-#     print (Year2020_April_AVG)
-#     print (Year2020_May_AVG)
-#     return HttpResponse(obj)
 
 # Below is just a practice method; can delete later
 def detail(request, question_id):
