@@ -19,6 +19,7 @@ dtypes = {
     'PM10_mask': 'str',
     'retrospective': 'str'
 }
+# read and reshape the database columns/headers
 air_data = pd.read_csv(url, comment='%', sep='\t', names=colnames, dtype=dtypes)
 air_data['city'] = 'Beijing'
 
