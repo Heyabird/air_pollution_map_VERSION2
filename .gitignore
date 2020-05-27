@@ -117,6 +117,7 @@ GitHub.sublime-settings
 
 # Node modules
 /node_modules
+/airpollutionsite/frontend/node_modules
 
 # virtual environment
 /env
